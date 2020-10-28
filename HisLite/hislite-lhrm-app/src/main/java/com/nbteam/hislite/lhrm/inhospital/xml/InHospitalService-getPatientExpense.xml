@@ -1,0 +1,44 @@
+<mapping>
+	<class name="com.nbteam.hislite.lhrm.api.inhospital.vo.HisPatientExpenseVo">
+		<map-to xml="Response" />
+		<field name="resultCode" type="string">
+			<bind-xml name="result" node="element" />
+		</field>
+		<field name="resultMsg" type="string">
+			<bind-xml name="message" node="element" />
+		</field>
+		<field name="patientName" type="string">
+			<bind-xml name="realName" node="element" />
+		</field>
+		<field name="idCardNo" type="string">
+			<bind-xml name="idCard" node="element" />
+		</field>
+		<field name="phone" type="string">
+			<bind-xml name="phone" node="element" />
+		</field>
+		<field name="sex" type="string">
+			<bind-xml name="sex" node="element" />
+		</field>
+		<field name="totleAmt" type="string">
+			<bind-xml name="totleAmt" node="element" />
+		</field>
+		<field name="usedAmt" type="string">
+			<bind-xml name="usedAmt" node="element" />
+		</field>
+		<field name="remainAmt" type="string">
+			<bind-xml name="remainAmt" node="element" />
+		</field>
+		<field name="inpatientArea" type="string">
+			<bind-xml name="inpatientArea" node="element" />
+		</field>
+		<field name="departmentCode" type="string">
+			<bind-xml name="departmentCode" node="element" />
+		</field>
+		<field name="doctorCode" type="string">
+			<bind-xml name="doctorCode" node="element" />
+		</field>
+		<field name="hisNo" type="string">
+			<bind-xml name="hisNo" node="element" />
+		</field>
+	</class>
+</mapping>

@@ -1,0 +1,707 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nbteam.hislite.lhrm.outpatient.mapper.HospitalOppayOrderMapper">
+  <resultMap id="BaseResultMap" type="com.nbteam.hislite.lhrm.api.outpatient.dto.HospitalOppayOrder">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="platform_id" jdbcType="BIGINT" property="platformId" />
+    <result column="his_order_no" jdbcType="VARCHAR" property="hisOrderNo" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="his_id" jdbcType="BIGINT" property="hisId" />
+    <result column="dept_id" jdbcType="VARCHAR" property="deptId" />
+    <result column="doctor_id" jdbcType="VARCHAR" property="doctorId" />
+    <result column="his_name" jdbcType="VARCHAR" property="hisName" />
+    <result column="dept_name" jdbcType="VARCHAR" property="deptName" />
+    <result column="doctor_name" jdbcType="VARCHAR" property="doctorName" />
+    <result column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="patient_id" jdbcType="BIGINT" property="patientId" />
+    <result column="pay_type" jdbcType="VARCHAR" property="payType" />
+    <result column="payed_time" jdbcType="TIMESTAMP" property="payedTime" />
+    <result column="agt_ord_num" jdbcType="VARCHAR" property="agtOrdNum" />
+    <result column="pay_status" jdbcType="INTEGER" property="payStatus" />
+    <result column="platform_source" jdbcType="INTEGER" property="platformSource" />
+    <result column="sub_source" jdbcType="INTEGER" property="subSource" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="refund_status" jdbcType="INTEGER" property="refundStatus" />
+    <result column="total_real_fee" jdbcType="INTEGER" property="totalRealFee" />
+    <result column="total_fee" jdbcType="INTEGER" property="totalFee" />
+    <result column="patient_name" jdbcType="VARCHAR" property="patientName" />
+    <result column="patient_id_type" jdbcType="INTEGER" property="patientIdType" />
+    <result column="patient_id_no" jdbcType="VARCHAR" property="patientIdNo" />
+    <result column="patient_sex" jdbcType="VARCHAR" property="patientSex" />
+    <result column="patient_age" jdbcType="INTEGER" property="patientAge" />
+    <result column="patient_mobile" jdbcType="VARCHAR" property="patientMobile" />
+    <result column="his_serial_no" jdbcType="VARCHAR" property="hisSerialNo" />
+    <result column="his_recepit_no" jdbcType="VARCHAR" property="hisRecepitNo" />
+    <result column="pat_card_type" jdbcType="VARCHAR" property="patCardType" />
+    <result column="pat_card_no" jdbcType="VARCHAR" property="patCardNo" />
+    <result column="his_refund_balance_no" jdbcType="VARCHAR" property="hisRefundBalanceNo" />
+    <result column="guide_info" jdbcType="VARCHAR" property="guideInfo" />
+    <result column="medical_fee" jdbcType="INTEGER" property="medicalFee" />
+    <result column="self_fee" jdbcType="INTEGER" property="selfFee" />
+    <result column="med_register_no" jdbcType="VARCHAR" property="medRegisterNo" />
+    <result column="is_zhima" jdbcType="INTEGER" property="isZhima" />
+    <result column="dev_id" jdbcType="VARCHAR" property="devId" />
+    <result column="is_auto_refund" jdbcType="INTEGER" property="isAutoRefund" />
+    <result column="sec_id" jdbcType="VARCHAR" property="secId" />
+    <result column="his_order_time" jdbcType="TIMESTAMP" property="hisOrderTime" />
+    <result column="charge_type" jdbcType="VARCHAR" property="chargeType" />
+    <result column="prescription_type" jdbcType="VARCHAR" property="prescriptionType" />
+    <result column="parent_his_id" jdbcType="BIGINT" property="parentHisId" />
+    <result column="pat_his_no" jdbcType="VARCHAR" property="patHisNo" />
+    <result column="ext_fields" jdbcType="VARCHAR" property="extFields" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="pay_order_id" jdbcType="BIGINT" property="payOrderId" />
+    <result column="his_bill_no" jdbcType="VARCHAR" property="hisBillNo" />
+    <result column="medical_param" jdbcType="VARCHAR" property="medicalParam" />
+    <result column="medical_flag" jdbcType="INTEGER" property="medicalFlag" />
+    <result column="error_msg" jdbcType="VARCHAR" property="errorMsg" />
+    <result column="system_type" jdbcType="INTEGER" property="systemType" />
+    <result column="merchant_order_id" jdbcType="VARCHAR" property="merchantOrderId" />
+    <result column="his_status" jdbcType="VARCHAR" property="hisStatus" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, platform_id, his_order_no, name, his_id, dept_id, doctor_id, his_name, dept_name, 
+    doctor_name, user_id, patient_id, pay_type, payed_time, agt_ord_num, pay_status, 
+    platform_source, sub_source, status, refund_status, total_real_fee, total_fee, patient_name, 
+    patient_id_type, patient_id_no, patient_sex, patient_age, patient_mobile, his_serial_no, 
+    his_recepit_no, pat_card_type, pat_card_no, his_refund_balance_no, guide_info, medical_fee, 
+    self_fee, med_register_no, is_zhima, dev_id, is_auto_refund, sec_id, his_order_time, 
+    charge_type, prescription_type, parent_his_id, pat_his_no, ext_fields, create_time, 
+    update_time, pay_order_id, his_bill_no, medical_param, medical_flag, error_msg, system_type, 
+    merchant_order_id, his_status
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_hospital_oppay_order
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_hospital_oppay_order
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.nbteam.hislite.lhrm.api.outpatient.dto.HospitalOppayOrder">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into t_hospital_oppay_order (platform_id, his_order_no, name, 
+      his_id, dept_id, doctor_id, 
+      his_name, dept_name, doctor_name, 
+      user_id, patient_id, pay_type, 
+      payed_time, agt_ord_num, pay_status, 
+      platform_source, sub_source, status, 
+      refund_status, total_real_fee, total_fee, 
+      patient_name, patient_id_type, patient_id_no, 
+      patient_sex, patient_age, patient_mobile, 
+      his_serial_no, his_recepit_no, pat_card_type, 
+      pat_card_no, his_refund_balance_no, guide_info, 
+      medical_fee, self_fee, med_register_no, 
+      is_zhima, dev_id, is_auto_refund, 
+      sec_id, his_order_time, charge_type, 
+      prescription_type, parent_his_id, pat_his_no, 
+      ext_fields, create_time, update_time, 
+      pay_order_id, his_bill_no, medical_param, 
+      medical_flag, error_msg, system_type, 
+      merchant_order_id, his_status)
+    values (#{platformId,jdbcType=BIGINT}, #{hisOrderNo,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{hisId,jdbcType=BIGINT}, #{deptId,jdbcType=VARCHAR}, #{doctorId,jdbcType=VARCHAR}, 
+      #{hisName,jdbcType=VARCHAR}, #{deptName,jdbcType=VARCHAR}, #{doctorName,jdbcType=VARCHAR}, 
+      #{userId,jdbcType=BIGINT}, #{patientId,jdbcType=BIGINT}, #{payType,jdbcType=VARCHAR}, 
+      #{payedTime,jdbcType=TIMESTAMP}, #{agtOrdNum,jdbcType=VARCHAR}, #{payStatus,jdbcType=INTEGER}, 
+      #{platformSource,jdbcType=INTEGER}, #{subSource,jdbcType=INTEGER}, #{status,jdbcType=VARCHAR}, 
+      #{refundStatus,jdbcType=INTEGER}, #{totalRealFee,jdbcType=INTEGER}, #{totalFee,jdbcType=INTEGER}, 
+      #{patientName,jdbcType=VARCHAR}, #{patientIdType,jdbcType=INTEGER}, #{patientIdNo,jdbcType=VARCHAR}, 
+      #{patientSex,jdbcType=VARCHAR}, #{patientAge,jdbcType=INTEGER}, #{patientMobile,jdbcType=VARCHAR}, 
+      #{hisSerialNo,jdbcType=VARCHAR}, #{hisRecepitNo,jdbcType=VARCHAR}, #{patCardType,jdbcType=VARCHAR}, 
+      #{patCardNo,jdbcType=VARCHAR}, #{hisRefundBalanceNo,jdbcType=VARCHAR}, #{guideInfo,jdbcType=VARCHAR}, 
+      #{medicalFee,jdbcType=INTEGER}, #{selfFee,jdbcType=INTEGER}, #{medRegisterNo,jdbcType=VARCHAR}, 
+      #{isZhima,jdbcType=INTEGER}, #{devId,jdbcType=VARCHAR}, #{isAutoRefund,jdbcType=INTEGER}, 
+      #{secId,jdbcType=VARCHAR}, #{hisOrderTime,jdbcType=TIMESTAMP}, #{chargeType,jdbcType=VARCHAR}, 
+      #{prescriptionType,jdbcType=VARCHAR}, #{parentHisId,jdbcType=BIGINT}, #{patHisNo,jdbcType=VARCHAR}, 
+      #{extFields,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{payOrderId,jdbcType=BIGINT}, #{hisBillNo,jdbcType=VARCHAR}, #{medicalParam,jdbcType=VARCHAR}, 
+      #{medicalFlag,jdbcType=INTEGER}, #{errorMsg,jdbcType=VARCHAR}, #{systemType,jdbcType=INTEGER}, 
+      #{merchantOrderId,jdbcType=VARCHAR}, #{hisStatus,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.nbteam.hislite.lhrm.api.outpatient.dto.HospitalOppayOrder">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into t_hospital_oppay_order
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="platformId != null">
+        platform_id,
+      </if>
+      <if test="hisOrderNo != null">
+        his_order_no,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="hisId != null">
+        his_id,
+      </if>
+      <if test="deptId != null">
+        dept_id,
+      </if>
+      <if test="doctorId != null">
+        doctor_id,
+      </if>
+      <if test="hisName != null">
+        his_name,
+      </if>
+      <if test="deptName != null">
+        dept_name,
+      </if>
+      <if test="doctorName != null">
+        doctor_name,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="patientId != null">
+        patient_id,
+      </if>
+      <if test="payType != null">
+        pay_type,
+      </if>
+      <if test="payedTime != null">
+        payed_time,
+      </if>
+      <if test="agtOrdNum != null">
+        agt_ord_num,
+      </if>
+      <if test="payStatus != null">
+        pay_status,
+      </if>
+      <if test="platformSource != null">
+        platform_source,
+      </if>
+      <if test="subSource != null">
+        sub_source,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="refundStatus != null">
+        refund_status,
+      </if>
+      <if test="totalRealFee != null">
+        total_real_fee,
+      </if>
+      <if test="totalFee != null">
+        total_fee,
+      </if>
+      <if test="patientName != null">
+        patient_name,
+      </if>
+      <if test="patientIdType != null">
+        patient_id_type,
+      </if>
+      <if test="patientIdNo != null">
+        patient_id_no,
+      </if>
+      <if test="patientSex != null">
+        patient_sex,
+      </if>
+      <if test="patientAge != null">
+        patient_age,
+      </if>
+      <if test="patientMobile != null">
+        patient_mobile,
+      </if>
+      <if test="hisSerialNo != null">
+        his_serial_no,
+      </if>
+      <if test="hisRecepitNo != null">
+        his_recepit_no,
+      </if>
+      <if test="patCardType != null">
+        pat_card_type,
+      </if>
+      <if test="patCardNo != null">
+        pat_card_no,
+      </if>
+      <if test="hisRefundBalanceNo != null">
+        his_refund_balance_no,
+      </if>
+      <if test="guideInfo != null">
+        guide_info,
+      </if>
+      <if test="medicalFee != null">
+        medical_fee,
+      </if>
+      <if test="selfFee != null">
+        self_fee,
+      </if>
+      <if test="medRegisterNo != null">
+        med_register_no,
+      </if>
+      <if test="isZhima != null">
+        is_zhima,
+      </if>
+      <if test="devId != null">
+        dev_id,
+      </if>
+      <if test="isAutoRefund != null">
+        is_auto_refund,
+      </if>
+      <if test="secId != null">
+        sec_id,
+      </if>
+      <if test="hisOrderTime != null">
+        his_order_time,
+      </if>
+      <if test="chargeType != null">
+        charge_type,
+      </if>
+      <if test="prescriptionType != null">
+        prescription_type,
+      </if>
+      <if test="parentHisId != null">
+        parent_his_id,
+      </if>
+      <if test="patHisNo != null">
+        pat_his_no,
+      </if>
+      <if test="extFields != null">
+        ext_fields,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="payOrderId != null">
+        pay_order_id,
+      </if>
+      <if test="hisBillNo != null">
+        his_bill_no,
+      </if>
+      <if test="medicalParam != null">
+        medical_param,
+      </if>
+      <if test="medicalFlag != null">
+        medical_flag,
+      </if>
+      <if test="errorMsg != null">
+        error_msg,
+      </if>
+      <if test="systemType != null">
+        system_type,
+      </if>
+      <if test="merchantOrderId != null">
+        merchant_order_id,
+      </if>
+      <if test="hisStatus != null">
+        his_status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="platformId != null">
+        #{platformId,jdbcType=BIGINT},
+      </if>
+      <if test="hisOrderNo != null">
+        #{hisOrderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="hisId != null">
+        #{hisId,jdbcType=BIGINT},
+      </if>
+      <if test="deptId != null">
+        #{deptId,jdbcType=VARCHAR},
+      </if>
+      <if test="doctorId != null">
+        #{doctorId,jdbcType=VARCHAR},
+      </if>
+      <if test="hisName != null">
+        #{hisName,jdbcType=VARCHAR},
+      </if>
+      <if test="deptName != null">
+        #{deptName,jdbcType=VARCHAR},
+      </if>
+      <if test="doctorName != null">
+        #{doctorName,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="patientId != null">
+        #{patientId,jdbcType=BIGINT},
+      </if>
+      <if test="payType != null">
+        #{payType,jdbcType=VARCHAR},
+      </if>
+      <if test="payedTime != null">
+        #{payedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="agtOrdNum != null">
+        #{agtOrdNum,jdbcType=VARCHAR},
+      </if>
+      <if test="payStatus != null">
+        #{payStatus,jdbcType=INTEGER},
+      </if>
+      <if test="platformSource != null">
+        #{platformSource,jdbcType=INTEGER},
+      </if>
+      <if test="subSource != null">
+        #{subSource,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="refundStatus != null">
+        #{refundStatus,jdbcType=INTEGER},
+      </if>
+      <if test="totalRealFee != null">
+        #{totalRealFee,jdbcType=INTEGER},
+      </if>
+      <if test="totalFee != null">
+        #{totalFee,jdbcType=INTEGER},
+      </if>
+      <if test="patientName != null">
+        #{patientName,jdbcType=VARCHAR},
+      </if>
+      <if test="patientIdType != null">
+        #{patientIdType,jdbcType=INTEGER},
+      </if>
+      <if test="patientIdNo != null">
+        #{patientIdNo,jdbcType=VARCHAR},
+      </if>
+      <if test="patientSex != null">
+        #{patientSex,jdbcType=VARCHAR},
+      </if>
+      <if test="patientAge != null">
+        #{patientAge,jdbcType=INTEGER},
+      </if>
+      <if test="patientMobile != null">
+        #{patientMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="hisSerialNo != null">
+        #{hisSerialNo,jdbcType=VARCHAR},
+      </if>
+      <if test="hisRecepitNo != null">
+        #{hisRecepitNo,jdbcType=VARCHAR},
+      </if>
+      <if test="patCardType != null">
+        #{patCardType,jdbcType=VARCHAR},
+      </if>
+      <if test="patCardNo != null">
+        #{patCardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="hisRefundBalanceNo != null">
+        #{hisRefundBalanceNo,jdbcType=VARCHAR},
+      </if>
+      <if test="guideInfo != null">
+        #{guideInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="medicalFee != null">
+        #{medicalFee,jdbcType=INTEGER},
+      </if>
+      <if test="selfFee != null">
+        #{selfFee,jdbcType=INTEGER},
+      </if>
+      <if test="medRegisterNo != null">
+        #{medRegisterNo,jdbcType=VARCHAR},
+      </if>
+      <if test="isZhima != null">
+        #{isZhima,jdbcType=INTEGER},
+      </if>
+      <if test="devId != null">
+        #{devId,jdbcType=VARCHAR},
+      </if>
+      <if test="isAutoRefund != null">
+        #{isAutoRefund,jdbcType=INTEGER},
+      </if>
+      <if test="secId != null">
+        #{secId,jdbcType=VARCHAR},
+      </if>
+      <if test="hisOrderTime != null">
+        #{hisOrderTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="chargeType != null">
+        #{chargeType,jdbcType=VARCHAR},
+      </if>
+      <if test="prescriptionType != null">
+        #{prescriptionType,jdbcType=VARCHAR},
+      </if>
+      <if test="parentHisId != null">
+        #{parentHisId,jdbcType=BIGINT},
+      </if>
+      <if test="patHisNo != null">
+        #{patHisNo,jdbcType=VARCHAR},
+      </if>
+      <if test="extFields != null">
+        #{extFields,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="payOrderId != null">
+        #{payOrderId,jdbcType=BIGINT},
+      </if>
+      <if test="hisBillNo != null">
+        #{hisBillNo,jdbcType=VARCHAR},
+      </if>
+      <if test="medicalParam != null">
+        #{medicalParam,jdbcType=VARCHAR},
+      </if>
+      <if test="medicalFlag != null">
+        #{medicalFlag,jdbcType=INTEGER},
+      </if>
+      <if test="errorMsg != null">
+        #{errorMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="systemType != null">
+        #{systemType,jdbcType=INTEGER},
+      </if>
+      <if test="merchantOrderId != null">
+        #{merchantOrderId,jdbcType=VARCHAR},
+      </if>
+      <if test="hisStatus != null">
+        #{hisStatus,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.nbteam.hislite.lhrm.api.outpatient.dto.HospitalOppayOrder">
+    update t_hospital_oppay_order
+    <set>
+      <if test="platformId != null">
+        platform_id = #{platformId,jdbcType=BIGINT},
+      </if>
+      <if test="hisOrderNo != null">
+        his_order_no = #{hisOrderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="hisId != null">
+        his_id = #{hisId,jdbcType=BIGINT},
+      </if>
+      <if test="deptId != null">
+        dept_id = #{deptId,jdbcType=VARCHAR},
+      </if>
+      <if test="doctorId != null">
+        doctor_id = #{doctorId,jdbcType=VARCHAR},
+      </if>
+      <if test="hisName != null">
+        his_name = #{hisName,jdbcType=VARCHAR},
+      </if>
+      <if test="deptName != null">
+        dept_name = #{deptName,jdbcType=VARCHAR},
+      </if>
+      <if test="doctorName != null">
+        doctor_name = #{doctorName,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="patientId != null">
+        patient_id = #{patientId,jdbcType=BIGINT},
+      </if>
+      <if test="payType != null">
+        pay_type = #{payType,jdbcType=VARCHAR},
+      </if>
+      <if test="payedTime != null">
+        payed_time = #{payedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="agtOrdNum != null">
+        agt_ord_num = #{agtOrdNum,jdbcType=VARCHAR},
+      </if>
+      <if test="payStatus != null">
+        pay_status = #{payStatus,jdbcType=INTEGER},
+      </if>
+      <if test="platformSource != null">
+        platform_source = #{platformSource,jdbcType=INTEGER},
+      </if>
+      <if test="subSource != null">
+        sub_source = #{subSource,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="refundStatus != null">
+        refund_status = #{refundStatus,jdbcType=INTEGER},
+      </if>
+      <if test="totalRealFee != null">
+        total_real_fee = #{totalRealFee,jdbcType=INTEGER},
+      </if>
+      <if test="totalFee != null">
+        total_fee = #{totalFee,jdbcType=INTEGER},
+      </if>
+      <if test="patientName != null">
+        patient_name = #{patientName,jdbcType=VARCHAR},
+      </if>
+      <if test="patientIdType != null">
+        patient_id_type = #{patientIdType,jdbcType=INTEGER},
+      </if>
+      <if test="patientIdNo != null">
+        patient_id_no = #{patientIdNo,jdbcType=VARCHAR},
+      </if>
+      <if test="patientSex != null">
+        patient_sex = #{patientSex,jdbcType=VARCHAR},
+      </if>
+      <if test="patientAge != null">
+        patient_age = #{patientAge,jdbcType=INTEGER},
+      </if>
+      <if test="patientMobile != null">
+        patient_mobile = #{patientMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="hisSerialNo != null">
+        his_serial_no = #{hisSerialNo,jdbcType=VARCHAR},
+      </if>
+      <if test="hisRecepitNo != null">
+        his_recepit_no = #{hisRecepitNo,jdbcType=VARCHAR},
+      </if>
+      <if test="patCardType != null">
+        pat_card_type = #{patCardType,jdbcType=VARCHAR},
+      </if>
+      <if test="patCardNo != null">
+        pat_card_no = #{patCardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="hisRefundBalanceNo != null">
+        his_refund_balance_no = #{hisRefundBalanceNo,jdbcType=VARCHAR},
+      </if>
+      <if test="guideInfo != null">
+        guide_info = #{guideInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="medicalFee != null">
+        medical_fee = #{medicalFee,jdbcType=INTEGER},
+      </if>
+      <if test="selfFee != null">
+        self_fee = #{selfFee,jdbcType=INTEGER},
+      </if>
+      <if test="medRegisterNo != null">
+        med_register_no = #{medRegisterNo,jdbcType=VARCHAR},
+      </if>
+      <if test="isZhima != null">
+        is_zhima = #{isZhima,jdbcType=INTEGER},
+      </if>
+      <if test="devId != null">
+        dev_id = #{devId,jdbcType=VARCHAR},
+      </if>
+      <if test="isAutoRefund != null">
+        is_auto_refund = #{isAutoRefund,jdbcType=INTEGER},
+      </if>
+      <if test="secId != null">
+        sec_id = #{secId,jdbcType=VARCHAR},
+      </if>
+      <if test="hisOrderTime != null">
+        his_order_time = #{hisOrderTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="chargeType != null">
+        charge_type = #{chargeType,jdbcType=VARCHAR},
+      </if>
+      <if test="prescriptionType != null">
+        prescription_type = #{prescriptionType,jdbcType=VARCHAR},
+      </if>
+      <if test="parentHisId != null">
+        parent_his_id = #{parentHisId,jdbcType=BIGINT},
+      </if>
+      <if test="patHisNo != null">
+        pat_his_no = #{patHisNo,jdbcType=VARCHAR},
+      </if>
+      <if test="extFields != null">
+        ext_fields = #{extFields,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="payOrderId != null">
+        pay_order_id = #{payOrderId,jdbcType=BIGINT},
+      </if>
+      <if test="hisBillNo != null">
+        his_bill_no = #{hisBillNo,jdbcType=VARCHAR},
+      </if>
+      <if test="medicalParam != null">
+        medical_param = #{medicalParam,jdbcType=VARCHAR},
+      </if>
+      <if test="medicalFlag != null">
+        medical_flag = #{medicalFlag,jdbcType=INTEGER},
+      </if>
+      <if test="errorMsg != null">
+        error_msg = #{errorMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="systemType != null">
+        system_type = #{systemType,jdbcType=INTEGER},
+      </if>
+      <if test="merchantOrderId != null">
+        merchant_order_id = #{merchantOrderId,jdbcType=VARCHAR},
+      </if>
+      <if test="hisStatus != null">
+        his_status = #{hisStatus,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.nbteam.hislite.lhrm.api.outpatient.dto.HospitalOppayOrder">
+    update t_hospital_oppay_order
+    set platform_id = #{platformId,jdbcType=BIGINT},
+      his_order_no = #{hisOrderNo,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      his_id = #{hisId,jdbcType=BIGINT},
+      dept_id = #{deptId,jdbcType=VARCHAR},
+      doctor_id = #{doctorId,jdbcType=VARCHAR},
+      his_name = #{hisName,jdbcType=VARCHAR},
+      dept_name = #{deptName,jdbcType=VARCHAR},
+      doctor_name = #{doctorName,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=BIGINT},
+      patient_id = #{patientId,jdbcType=BIGINT},
+      pay_type = #{payType,jdbcType=VARCHAR},
+      payed_time = #{payedTime,jdbcType=TIMESTAMP},
+      agt_ord_num = #{agtOrdNum,jdbcType=VARCHAR},
+      pay_status = #{payStatus,jdbcType=INTEGER},
+      platform_source = #{platformSource,jdbcType=INTEGER},
+      sub_source = #{subSource,jdbcType=INTEGER},
+      status = #{status,jdbcType=VARCHAR},
+      refund_status = #{refundStatus,jdbcType=INTEGER},
+      total_real_fee = #{totalRealFee,jdbcType=INTEGER},
+      total_fee = #{totalFee,jdbcType=INTEGER},
+      patient_name = #{patientName,jdbcType=VARCHAR},
+      patient_id_type = #{patientIdType,jdbcType=INTEGER},
+      patient_id_no = #{patientIdNo,jdbcType=VARCHAR},
+      patient_sex = #{patientSex,jdbcType=VARCHAR},
+      patient_age = #{patientAge,jdbcType=INTEGER},
+      patient_mobile = #{patientMobile,jdbcType=VARCHAR},
+      his_serial_no = #{hisSerialNo,jdbcType=VARCHAR},
+      his_recepit_no = #{hisRecepitNo,jdbcType=VARCHAR},
+      pat_card_type = #{patCardType,jdbcType=VARCHAR},
+      pat_card_no = #{patCardNo,jdbcType=VARCHAR},
+      his_refund_balance_no = #{hisRefundBalanceNo,jdbcType=VARCHAR},
+      guide_info = #{guideInfo,jdbcType=VARCHAR},
+      medical_fee = #{medicalFee,jdbcType=INTEGER},
+      self_fee = #{selfFee,jdbcType=INTEGER},
+      med_register_no = #{medRegisterNo,jdbcType=VARCHAR},
+      is_zhima = #{isZhima,jdbcType=INTEGER},
+      dev_id = #{devId,jdbcType=VARCHAR},
+      is_auto_refund = #{isAutoRefund,jdbcType=INTEGER},
+      sec_id = #{secId,jdbcType=VARCHAR},
+      his_order_time = #{hisOrderTime,jdbcType=TIMESTAMP},
+      charge_type = #{chargeType,jdbcType=VARCHAR},
+      prescription_type = #{prescriptionType,jdbcType=VARCHAR},
+      parent_his_id = #{parentHisId,jdbcType=BIGINT},
+      pat_his_no = #{patHisNo,jdbcType=VARCHAR},
+      ext_fields = #{extFields,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      pay_order_id = #{payOrderId,jdbcType=BIGINT},
+      his_bill_no = #{hisBillNo,jdbcType=VARCHAR},
+      medical_param = #{medicalParam,jdbcType=VARCHAR},
+      medical_flag = #{medicalFlag,jdbcType=INTEGER},
+      error_msg = #{errorMsg,jdbcType=VARCHAR},
+      system_type = #{systemType,jdbcType=INTEGER},
+      merchant_order_id = #{merchantOrderId,jdbcType=VARCHAR},
+      his_status = #{hisStatus,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

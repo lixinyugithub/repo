@@ -1,0 +1,17 @@
+<mapping>
+	<class name="com.nbteam.hislite.lhrm.api.outpatient.vo.FindClinicNoResultVo">
+		<map-to xml="root" />
+		<field name="resultCode" type="string">
+			<bind-xml name="result" node="element"></bind-xml>
+		</field>
+		<field name="resultMsg" type="string">
+			<bind-xml name="message" node="element"></bind-xml>
+		</field>
+		<field name="realName" type="string">
+			<bind-xml name="realName" node="element"></bind-xml>
+		</field>
+		<field name="patientCard" type="string">
+			<bind-xml name="patientCard" node="element"></bind-xml>
+		</field>
+	</class>
+</mapping>

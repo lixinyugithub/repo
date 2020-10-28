@@ -1,0 +1,452 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nbteam.hislite.his.his.mapper.HospitalHisMapper">
+  <resultMap id="BaseResultMap" type="com.nbteam.hislite.his.api.his.dto.HospitalHis">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="alias" jdbcType="CHAR" property="alias" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="province_no" jdbcType="VARCHAR" property="provinceNo" />
+    <result column="city_no" jdbcType="VARCHAR" property="cityNo" />
+    <result column="area_no" jdbcType="VARCHAR" property="areaNo" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="parent_his_no" jdbcType="VARCHAR" property="parentHisNo" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="tel_no" jdbcType="VARCHAR" property="telNo" />
+    <result column="website" jdbcType="VARCHAR" property="website" />
+    <result column="level" jdbcType="INTEGER" property="level" />
+    <result column="level_name" jdbcType="VARCHAR" property="levelName" />
+    <result column="contacts" jdbcType="VARCHAR" property="contacts" />
+    <result column="contacts_phone_no" jdbcType="VARCHAR" property="contactsPhoneNo" />
+    <result column="contacts_email" jdbcType="VARCHAR" property="contactsEmail" />
+    <result column="img_path" jdbcType="VARCHAR" property="imgPath" />
+    <result column="floor_img_path" jdbcType="VARCHAR" property="floorImgPath" />
+    <result column="traffic_img_path" jdbcType="VARCHAR" property="trafficImgPath" />
+    <result column="reg_tel" jdbcType="VARCHAR" property="regTel" />
+    <result column="longitude" jdbcType="VARCHAR" property="longitude" />
+    <result column="latitude" jdbcType="VARCHAR" property="latitude" />
+    <result column="logo_url" jdbcType="VARCHAR" property="logoUrl" />
+    <result column="py_initials" jdbcType="VARCHAR" property="pyInitials" />
+    <result column="tag" jdbcType="VARCHAR" property="tag" />
+    <result column="regster_limit_days" jdbcType="INTEGER" property="regsterLimitDays" />
+    <result column="regster_time_out" jdbcType="INTEGER" property="regsterTimeOut" />
+    <result column="rank" jdbcType="INTEGER" property="rank" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="ext_fields" jdbcType="VARCHAR" property="extFields" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.nbteam.hislite.his.api.his.dto.HospitalHis">
+    <result column="introduction" jdbcType="LONGVARCHAR" property="introduction" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, alias, name, province_no, city_no, area_no, type, parent_his_no, address, tel_no, 
+    website, level, level_name, contacts, contacts_phone_no, contacts_email, img_path, 
+    floor_img_path, traffic_img_path, reg_tel, longitude, latitude, logo_url, py_initials, 
+    tag, regster_limit_days, regster_time_out, rank, create_time, update_time, ext_fields
+  </sql>
+  <sql id="Blob_Column_List">
+    introduction
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from t_hospital_his
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_hospital_his
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.nbteam.hislite.his.api.his.dto.HospitalHis">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into t_hospital_his (alias, name, province_no, 
+      city_no, area_no, type, 
+      parent_his_no, address, tel_no, 
+      website, level, level_name, 
+      contacts, contacts_phone_no, contacts_email, 
+      img_path, floor_img_path, traffic_img_path, 
+      reg_tel, longitude, latitude, 
+      logo_url, py_initials, tag, 
+      regster_limit_days, regster_time_out, rank, 
+      create_time, update_time, ext_fields, 
+      introduction)
+    values (#{alias,jdbcType=CHAR}, #{name,jdbcType=VARCHAR}, #{provinceNo,jdbcType=VARCHAR}, 
+      #{cityNo,jdbcType=VARCHAR}, #{areaNo,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}, 
+      #{parentHisNo,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{telNo,jdbcType=VARCHAR}, 
+      #{website,jdbcType=VARCHAR}, #{level,jdbcType=INTEGER}, #{levelName,jdbcType=VARCHAR}, 
+      #{contacts,jdbcType=VARCHAR}, #{contactsPhoneNo,jdbcType=VARCHAR}, #{contactsEmail,jdbcType=VARCHAR}, 
+      #{imgPath,jdbcType=VARCHAR}, #{floorImgPath,jdbcType=VARCHAR}, #{trafficImgPath,jdbcType=VARCHAR}, 
+      #{regTel,jdbcType=VARCHAR}, #{longitude,jdbcType=VARCHAR}, #{latitude,jdbcType=VARCHAR}, 
+      #{logoUrl,jdbcType=VARCHAR}, #{pyInitials,jdbcType=VARCHAR}, #{tag,jdbcType=VARCHAR}, 
+      #{regsterLimitDays,jdbcType=INTEGER}, #{regsterTimeOut,jdbcType=INTEGER}, #{rank,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{extFields,jdbcType=VARCHAR}, 
+      #{introduction,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.nbteam.hislite.his.api.his.dto.HospitalHis">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into t_hospital_his
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="alias != null">
+        alias,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="provinceNo != null">
+        province_no,
+      </if>
+      <if test="cityNo != null">
+        city_no,
+      </if>
+      <if test="areaNo != null">
+        area_no,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="parentHisNo != null">
+        parent_his_no,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="telNo != null">
+        tel_no,
+      </if>
+      <if test="website != null">
+        website,
+      </if>
+      <if test="level != null">
+        level,
+      </if>
+      <if test="levelName != null">
+        level_name,
+      </if>
+      <if test="contacts != null">
+        contacts,
+      </if>
+      <if test="contactsPhoneNo != null">
+        contacts_phone_no,
+      </if>
+      <if test="contactsEmail != null">
+        contacts_email,
+      </if>
+      <if test="imgPath != null">
+        img_path,
+      </if>
+      <if test="floorImgPath != null">
+        floor_img_path,
+      </if>
+      <if test="trafficImgPath != null">
+        traffic_img_path,
+      </if>
+      <if test="regTel != null">
+        reg_tel,
+      </if>
+      <if test="longitude != null">
+        longitude,
+      </if>
+      <if test="latitude != null">
+        latitude,
+      </if>
+      <if test="logoUrl != null">
+        logo_url,
+      </if>
+      <if test="pyInitials != null">
+        py_initials,
+      </if>
+      <if test="tag != null">
+        tag,
+      </if>
+      <if test="regsterLimitDays != null">
+        regster_limit_days,
+      </if>
+      <if test="regsterTimeOut != null">
+        regster_time_out,
+      </if>
+      <if test="rank != null">
+        rank,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="extFields != null">
+        ext_fields,
+      </if>
+      <if test="introduction != null">
+        introduction,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="alias != null">
+        #{alias,jdbcType=CHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="provinceNo != null">
+        #{provinceNo,jdbcType=VARCHAR},
+      </if>
+      <if test="cityNo != null">
+        #{cityNo,jdbcType=VARCHAR},
+      </if>
+      <if test="areaNo != null">
+        #{areaNo,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="parentHisNo != null">
+        #{parentHisNo,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="telNo != null">
+        #{telNo,jdbcType=VARCHAR},
+      </if>
+      <if test="website != null">
+        #{website,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null">
+        #{level,jdbcType=INTEGER},
+      </if>
+      <if test="levelName != null">
+        #{levelName,jdbcType=VARCHAR},
+      </if>
+      <if test="contacts != null">
+        #{contacts,jdbcType=VARCHAR},
+      </if>
+      <if test="contactsPhoneNo != null">
+        #{contactsPhoneNo,jdbcType=VARCHAR},
+      </if>
+      <if test="contactsEmail != null">
+        #{contactsEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="imgPath != null">
+        #{imgPath,jdbcType=VARCHAR},
+      </if>
+      <if test="floorImgPath != null">
+        #{floorImgPath,jdbcType=VARCHAR},
+      </if>
+      <if test="trafficImgPath != null">
+        #{trafficImgPath,jdbcType=VARCHAR},
+      </if>
+      <if test="regTel != null">
+        #{regTel,jdbcType=VARCHAR},
+      </if>
+      <if test="longitude != null">
+        #{longitude,jdbcType=VARCHAR},
+      </if>
+      <if test="latitude != null">
+        #{latitude,jdbcType=VARCHAR},
+      </if>
+      <if test="logoUrl != null">
+        #{logoUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="pyInitials != null">
+        #{pyInitials,jdbcType=VARCHAR},
+      </if>
+      <if test="tag != null">
+        #{tag,jdbcType=VARCHAR},
+      </if>
+      <if test="regsterLimitDays != null">
+        #{regsterLimitDays,jdbcType=INTEGER},
+      </if>
+      <if test="regsterTimeOut != null">
+        #{regsterTimeOut,jdbcType=INTEGER},
+      </if>
+      <if test="rank != null">
+        #{rank,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="extFields != null">
+        #{extFields,jdbcType=VARCHAR},
+      </if>
+      <if test="introduction != null">
+        #{introduction,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.nbteam.hislite.his.api.his.dto.HospitalHis">
+    update t_hospital_his
+    <set>
+      <if test="alias != null">
+        alias = #{alias,jdbcType=CHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="provinceNo != null">
+        province_no = #{provinceNo,jdbcType=VARCHAR},
+      </if>
+      <if test="cityNo != null">
+        city_no = #{cityNo,jdbcType=VARCHAR},
+      </if>
+      <if test="areaNo != null">
+        area_no = #{areaNo,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="parentHisNo != null">
+        parent_his_no = #{parentHisNo,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="telNo != null">
+        tel_no = #{telNo,jdbcType=VARCHAR},
+      </if>
+      <if test="website != null">
+        website = #{website,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null">
+        level = #{level,jdbcType=INTEGER},
+      </if>
+      <if test="levelName != null">
+        level_name = #{levelName,jdbcType=VARCHAR},
+      </if>
+      <if test="contacts != null">
+        contacts = #{contacts,jdbcType=VARCHAR},
+      </if>
+      <if test="contactsPhoneNo != null">
+        contacts_phone_no = #{contactsPhoneNo,jdbcType=VARCHAR},
+      </if>
+      <if test="contactsEmail != null">
+        contacts_email = #{contactsEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="imgPath != null">
+        img_path = #{imgPath,jdbcType=VARCHAR},
+      </if>
+      <if test="floorImgPath != null">
+        floor_img_path = #{floorImgPath,jdbcType=VARCHAR},
+      </if>
+      <if test="trafficImgPath != null">
+        traffic_img_path = #{trafficImgPath,jdbcType=VARCHAR},
+      </if>
+      <if test="regTel != null">
+        reg_tel = #{regTel,jdbcType=VARCHAR},
+      </if>
+      <if test="longitude != null">
+        longitude = #{longitude,jdbcType=VARCHAR},
+      </if>
+      <if test="latitude != null">
+        latitude = #{latitude,jdbcType=VARCHAR},
+      </if>
+      <if test="logoUrl != null">
+        logo_url = #{logoUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="pyInitials != null">
+        py_initials = #{pyInitials,jdbcType=VARCHAR},
+      </if>
+      <if test="tag != null">
+        tag = #{tag,jdbcType=VARCHAR},
+      </if>
+      <if test="regsterLimitDays != null">
+        regster_limit_days = #{regsterLimitDays,jdbcType=INTEGER},
+      </if>
+      <if test="regsterTimeOut != null">
+        regster_time_out = #{regsterTimeOut,jdbcType=INTEGER},
+      </if>
+      <if test="rank != null">
+        rank = #{rank,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="extFields != null">
+        ext_fields = #{extFields,jdbcType=VARCHAR},
+      </if>
+      <if test="introduction != null">
+        introduction = #{introduction,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.nbteam.hislite.his.api.his.dto.HospitalHis">
+    update t_hospital_his
+    set alias = #{alias,jdbcType=CHAR},
+      name = #{name,jdbcType=VARCHAR},
+      province_no = #{provinceNo,jdbcType=VARCHAR},
+      city_no = #{cityNo,jdbcType=VARCHAR},
+      area_no = #{areaNo,jdbcType=VARCHAR},
+      type = #{type,jdbcType=INTEGER},
+      parent_his_no = #{parentHisNo,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      tel_no = #{telNo,jdbcType=VARCHAR},
+      website = #{website,jdbcType=VARCHAR},
+      level = #{level,jdbcType=INTEGER},
+      level_name = #{levelName,jdbcType=VARCHAR},
+      contacts = #{contacts,jdbcType=VARCHAR},
+      contacts_phone_no = #{contactsPhoneNo,jdbcType=VARCHAR},
+      contacts_email = #{contactsEmail,jdbcType=VARCHAR},
+      img_path = #{imgPath,jdbcType=VARCHAR},
+      floor_img_path = #{floorImgPath,jdbcType=VARCHAR},
+      traffic_img_path = #{trafficImgPath,jdbcType=VARCHAR},
+      reg_tel = #{regTel,jdbcType=VARCHAR},
+      longitude = #{longitude,jdbcType=VARCHAR},
+      latitude = #{latitude,jdbcType=VARCHAR},
+      logo_url = #{logoUrl,jdbcType=VARCHAR},
+      py_initials = #{pyInitials,jdbcType=VARCHAR},
+      tag = #{tag,jdbcType=VARCHAR},
+      regster_limit_days = #{regsterLimitDays,jdbcType=INTEGER},
+      regster_time_out = #{regsterTimeOut,jdbcType=INTEGER},
+      rank = #{rank,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      ext_fields = #{extFields,jdbcType=VARCHAR},
+      introduction = #{introduction,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.nbteam.hislite.his.api.his.dto.HospitalHis">
+    update t_hospital_his
+    set alias = #{alias,jdbcType=CHAR},
+      name = #{name,jdbcType=VARCHAR},
+      province_no = #{provinceNo,jdbcType=VARCHAR},
+      city_no = #{cityNo,jdbcType=VARCHAR},
+      area_no = #{areaNo,jdbcType=VARCHAR},
+      type = #{type,jdbcType=INTEGER},
+      parent_his_no = #{parentHisNo,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      tel_no = #{telNo,jdbcType=VARCHAR},
+      website = #{website,jdbcType=VARCHAR},
+      level = #{level,jdbcType=INTEGER},
+      level_name = #{levelName,jdbcType=VARCHAR},
+      contacts = #{contacts,jdbcType=VARCHAR},
+      contacts_phone_no = #{contactsPhoneNo,jdbcType=VARCHAR},
+      contacts_email = #{contactsEmail,jdbcType=VARCHAR},
+      img_path = #{imgPath,jdbcType=VARCHAR},
+      floor_img_path = #{floorImgPath,jdbcType=VARCHAR},
+      traffic_img_path = #{trafficImgPath,jdbcType=VARCHAR},
+      reg_tel = #{regTel,jdbcType=VARCHAR},
+      longitude = #{longitude,jdbcType=VARCHAR},
+      latitude = #{latitude,jdbcType=VARCHAR},
+      logo_url = #{logoUrl,jdbcType=VARCHAR},
+      py_initials = #{pyInitials,jdbcType=VARCHAR},
+      tag = #{tag,jdbcType=VARCHAR},
+      regster_limit_days = #{regsterLimitDays,jdbcType=INTEGER},
+      regster_time_out = #{regsterTimeOut,jdbcType=INTEGER},
+      rank = #{rank,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      ext_fields = #{extFields,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

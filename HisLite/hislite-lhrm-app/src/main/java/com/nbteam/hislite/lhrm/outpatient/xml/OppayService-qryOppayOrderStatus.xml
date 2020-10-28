@@ -1,0 +1,74 @@
+<mapping>
+<field-handler name="myHandlerDate"
+		class="com.nbteam.hislite.common.castor.MyDateHandler">
+		<param name="date-format" value="yyyyMMdd" />
+	</field-handler>
+	<class name="com.nbteam.hislite.lhrm.api.outpatient.vo.QryOppayOrderStatusResultVo">
+		<map-to xml="response" />
+		<field name="resultCode" type="string">
+			<bind-xml name="result" node="element"></bind-xml>
+		</field>
+		<field name="resultMsg" type="string">
+			<bind-xml name="message" node="element"></bind-xml>
+		</field>
+		<field name="id" type="string">
+			<bind-xml name="id" node="element"></bind-xml>
+		</field>
+		<field name="bizId" type="string">
+			<bind-xml name="biz_id" node="element"></bind-xml>
+		</field>
+		<field name="endorseNo" type="string">
+			<bind-xml name="endorse_no" node="element"></bind-xml>
+		</field>
+		<field name="tradeNo" type="string">
+			<bind-xml name="trade_no" node="element"></bind-xml>
+		</field>
+		<field name="dataSrc" type="string">
+			<bind-xml name="data_src" node="element"></bind-xml>
+		</field>
+		<field name="customerId" type="string">
+			<bind-xml name="customer_id" node="element"></bind-xml>
+		</field>
+		<field name="hospitalId" type="string">
+			<bind-xml name="hospital_id" node="element"></bind-xml>
+		</field>
+		<field name="patientId" type="string">
+			<bind-xml name="patient_id" node="element"></bind-xml>
+		</field>
+		<field name="patientName" type="string">
+			<bind-xml name="patient_name" node="element"></bind-xml>
+		</field>
+		<field name="orderAmount" type="string">
+			<bind-xml name="order_amount" node="element"></bind-xml>
+		</field>
+		<field name="orderStatus" type="string">
+			<bind-xml name="order_status" node="element"></bind-xml>
+		</field>
+		<field name="feeType" type="string">
+			<bind-xml name="fee_type" node="element"></bind-xml>
+		</field>
+		<field name="payType" type="string">
+			<bind-xml name="pay_type" node="element"></bind-xml>
+		</field>
+		<field name="feeDate" type="string">
+			<bind-xml name="fee_date" node="element"></bind-xml>
+		</field>
+		 <field name="updateTime" type="string">
+			<bind-xml name="update_time" node="element"></bind-xml>
+		</field>
+		<field name="createTime" type="string">
+			<bind-xml name="create_time" node="element"></bind-xml>
+		</field>
+		<field name="hisStatus" type="string">
+			<bind-xml name="his_status" node="element"></bind-xml>
+		</field>
+		<field name="idCard" type="string">
+			<bind-xml name="id_card" node="element"></bind-xml>
+		</field>
+		<field name="sign" type="string">
+			<bind-xml name="sign" node="element"></bind-xml>
+		</field>
+		
+	</class>
+	
+</mapping>

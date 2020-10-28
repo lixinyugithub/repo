@@ -1,0 +1,29 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://www.easyhos.com/webservice" elementFormDefault="qualified">
+
+    <xs:element name="OutpatientPayParamVo">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="prescriptionNo" type="xs:string"/>
+                <xs:element name="realName" type="xs:string"/>
+                <xs:element name="patientCard" type="xs:string"/>
+                <xs:element name="orderFee" type="xs:string"/>
+                <xs:element name="feeType" type="xs:string"/>
+                <xs:element name="payType" type="xs:string"/>
+                <xs:element name="updateDate" type="xs:string"/>
+                <xs:element name="tradeNo" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="OutpatientPayResultVo">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="result" type="xs:string"/>
+                <xs:element name="message" type="xs:string"/>
+                <xs:element name="invoiceNo" type="xs:string"/>
+                <xs:element name="serialNo" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

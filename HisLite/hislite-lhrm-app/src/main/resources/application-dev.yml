@@ -1,0 +1,12 @@
+hislite.eureka.url: http://localhost:8810/eureka/
+hislite.mysql.url: 'jdbc:mysql://rm-uf64a7y0aaymg1p0beo.mysql.rds.aliyuncs.com/hislite?useOldAliasMetadataBehavior=true&useUnicode=true&characterEncoding=utf-8&autoReconnect=true&allowMultiQueries=true&tinyInt1isBit=false'
+hislite.mysql.username: 'root'
+hislite.mysql.password: '!QAZ@WSX3edc'
+
+
+hislite.ReadTimeout: 100000
+hislite.ConnectTimeout: 10000
+
+hislite.redis.ip: 47.100.126.72
+hislite.redis.port: 6379
+hislite.redis.pwd: '!QAZ@WSX3edc'

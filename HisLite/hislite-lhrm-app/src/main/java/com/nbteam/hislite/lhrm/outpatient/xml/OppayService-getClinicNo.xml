@@ -1,0 +1,39 @@
+<mapping>
+	<field-handler name="myHandlerDate"
+		class="com.nbteam.hislite.common.castor.MyDateHandler">
+		<param name="date-format" value="yyyyMMdd" />
+	</field-handler>
+	<class name="com.nbteam.hislite.lhrm.api.outpatient.vo.FindClinicNoResultVo">
+		<map-to xml="root" />
+		<field name="resultCode" type="string">
+			<bind-xml name="result" node="element"></bind-xml>
+		</field>
+		<field name="resultMsg" type="string">
+			<bind-xml name="message" node="element"></bind-xml>
+		</field>
+		<field name="realName" type="string">
+			<bind-xml name="realName" node="element"></bind-xml>
+		</field>
+		<field name="patientCard" type="string">
+			<bind-xml name="patientCard" node="element"></bind-xml>
+		</field>
+		<field name="createDate" type="string">
+			<bind-xml name="createDate" node="element"></bind-xml>
+		</field>
+		<field name="departmentName" type="string">
+			<bind-xml name="departmentName" node="element"></bind-xml>
+		</field>
+		<field name="departmentCode" type="string">
+			<bind-xml name="departmentCode" node="element"></bind-xml>
+		</field>
+		<field name="doctorName" type="string">
+			<bind-xml name="doctorName" node="element"></bind-xml>
+		</field>
+		<field name="doctorCode" type="string">
+			<bind-xml name="doctorCode" node="element"></bind-xml>
+		</field>
+		<field name="clinicNo" type="string">
+			<bind-xml name="clinicNo" node="element"></bind-xml>
+		</field>
+	</class>
+</mapping>

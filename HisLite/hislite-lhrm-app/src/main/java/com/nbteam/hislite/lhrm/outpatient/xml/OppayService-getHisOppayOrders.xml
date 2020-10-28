@@ -1,0 +1,56 @@
+<mapping>
+	<field-handler name="myHandler"
+		class="com.nbteam.hislite.common.castor.MyDateHandler">
+		<param name="date-format" value="yyyy-MM-dd" />
+	</field-handler>
+	<class name="com.nbteam.hislite.lhrm.api.outpatient.vo.GetHisOppayOrderVo">
+		<map-to xml="Response" />
+		<field name="resultCode" type="string">
+			<bind-xml name="RESULT" node="element" />
+		</field>
+		<field name="resultMessage" type="string">
+			<bind-xml name="MESSAGE" node="element" />
+		</field>
+		<field name="itemList" collection="arraylist"
+			type="com.nbteam.hislite.lhrm.api.outpatient.vo.HisOppayOrderVo">
+			<bind-xml name="data" node="element" />
+		</field>
+	</class>
+
+
+	<class name="com.nbteam.hislite.lhrm.api.outpatient.vo.HisOppayOrderVo">
+		<field name="patHisNo" type="string">
+			<bind-xml name="CLINICNO" node="element"></bind-xml>
+		</field>
+		<field name="hisOrderNo" type="string">
+			<bind-xml name="PRESCRIPTIONNO" node="element"></bind-xml>
+		</field>
+		<field name="patientName" type="string">
+			<bind-xml name="REALNAME" node="element"></bind-xml>
+		</field>
+		<field name="patCardNo" type="string">
+			<bind-xml name="PATIENTCARD" node="element"></bind-xml>
+		</field>
+		<field name="totalRealFee" type="int">
+			<bind-xml name="ORDERFEE" node="element"></bind-xml>
+		</field>
+		<field name="hisOrderTime" type="string" handler="myHandler">
+			<bind-xml name="CREATEDATE" node="element"></bind-xml>
+		</field>
+		<field name="chargeType" type="string">
+			<bind-xml name="FEETYPE" node="element"></bind-xml>
+		</field>
+		<field name="deptName" type="string">
+			<bind-xml name="DEPARTMENTNAME" node="element"></bind-xml>
+		</field>
+		<field name="deptId" type="string">
+			<bind-xml name="DEPARTMENTCODE" node="element"></bind-xml>
+		</field>
+		<field name="doctorName" type="string">
+			<bind-xml name="DOCTORNAME" node="element"></bind-xml>
+		</field>
+		<field name="doctorId" type="string">
+			<bind-xml name="DOCTORCODE" node="element"></bind-xml>
+		</field>
+	</class>
+</mapping>

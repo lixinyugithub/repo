@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: "hislite-spring-zuul"
+  profiles:
+    active: dev
+server:
+  port: 8820
+
+#注册中心配置参数
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${hislite.eureka.url}
+#熔断设置      
+hystrixcommand:
+  default:
+    execution:
+      isolation:
+        thread:
+          timeoutInMilliseconds: 60000      
+#路由         
+zuul:
+  routes:
+    hislite-lhrm-app:
+      path: /hislite-lhrm-app/**
+      service-id: hislite-lhrm-app
+     
+#启用熔断      
+feign:
+  hystrix:
+    enabled: true
+hystrix:
+  command:
+    default:
+      execution.isolation.thread.timeoutInMilliseconds: 60000

@@ -1,0 +1,11 @@
+<mapping>
+	<class name="com.gzhc365.protocol.vo.BaseMpVo">
+		<map-to xml="root" />
+		<field name="result" type="string">
+			<bind-xml name="result" node="element" />
+		</field>
+		<field name="message" type="string">
+			<bind-xml name="message" node="element" />
+		</field>
+	</class>
+</mapping>

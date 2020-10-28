@@ -1,0 +1,24 @@
+<mapping>
+	<class name="com.nbteam.hislite.lhrm.api.outpatient.vo.CreateOppayOrderResultVo">
+		<map-to xml="response" />
+		<field name="resultCode" type="string">
+			<bind-xml name="result" node="element"></bind-xml>
+		</field>
+		<field name="resultMsg" type="string">
+			<bind-xml name="message" node="element"></bind-xml>
+		</field>
+		<field name="hospitalId" type="string">
+			<bind-xml name="hospital_id" node="element"></bind-xml>
+		</field>
+		<field name="tradeNo" type="string">
+			<bind-xml name="trade_no" node="element"></bind-xml>
+		</field>
+		<field name="payUrl" type="string">
+			<bind-xml name="pay_url" node="element"></bind-xml>
+		</field>
+		<field name="sign" type="string">
+			<bind-xml name="sign" node="element"></bind-xml>
+		</field>
+	</class>
+	
+</mapping>

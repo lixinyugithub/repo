@@ -1,0 +1,34 @@
+hislite.eureka.url: http://localhost:8810/eureka/
+hislite.mysql.url: 'jdbc:mysql://rm-uf64a7y0aaymg1p0beo.mysql.rds.aliyuncs.com/hislite?useOldAliasMetadataBehavior=true&useUnicode=true&characterEncoding=utf-8&autoReconnect=true&allowMultiQueries=true&tinyInt1isBit=false'
+hislite.mysql.username: 'root'
+hislite.mysql.password: '!QAZ@WSX3edc'
+
+hislite.redis.ip: 47.100.126.72
+hislite.redis.port: 6379
+hislite.redis.pwd: '!QAZ@WSX3edc'
+
+hislite.ReadTimeout: 100000
+hislite.ConnectTimeout: 10000
+
+hc.paycenter.cashierURI: ''
+alipay.pay.notify.url:
+wx.merchant.key.file.path:
+wx.micro.pay.url: 'https://api.mch.weixin.qq.com/pay/micropay'
+wx.micro.orderquery.url: 'https://api.mch.weixin.qq.com/pay/orderquery'
+wx.unifiedorder.payed.url: 'https://api.mch.weixin.qq.com/pay/unifiedorder'
+wx.micro.reverse.url: 'https://api.mch.weixin.qq.com/secapi/pay/reverse'
+wx.refund.url: 'https://api.mch.weixin.qq.com/secapi/pay/refund'
+wx.micro.authcode.openid: 'https://api.mch.weixin.qq.com/tools/authcodetoopenid'
+wx.refundquery.url: 'https://api.mch.weixin.qq.com/pay/refundquery'
+wx.closeorder.url: 'https://api.mch.weixin.qq.com/pay/closeorder'
+wx.med.unifiedorder.url: 'https://api.weixin.qq.com/payinsurance/unifiedorder?access_token=ACCESS_TOKEN'
+wx.med.queryorder.url: 'https://api.weixin.qq.com/payinsurance/queryorder?access_token=ACCESS_TOKEN'
+wx.med.refund.url: 'https://api.weixin.qq.com/payinsurance/refund?access_token=ACCESS_TOKEN'
+wx.med.refund.query.url: 'https://api.weixin.qq.com/payinsurance/queryrefund?access_token=ACCESS_TOKEN'
+wx.pay.notify.url: 'http://smp.med.gzhc365.com/daemon/wx/wxpaymsg'
+wxapp.send.templeate.message.url: 'https://api.weixin.qq.com/cgi-bin/message/wxopen/template/send?access_token=%s'
+wx.sent.customer.message.url: 'https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token=%s'
+wx.sent.templeate.message.url: 'https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=%s'
+
+#是否mock
+hislite.env.mock: true

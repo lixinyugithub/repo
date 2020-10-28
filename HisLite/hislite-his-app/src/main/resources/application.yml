@@ -1,0 +1,89 @@
+server: #默认server服务相关参数配置
+  port: 8840
+  session-timeout: 30  
+  tomcat.max-threads: 0  
+  tomcat.uri-encoding: UTF-8
+
+#认证路径规则匹配不
+#app.auth.noTokenAllowedUrl: /hislite-hos/static/*,*.html,/hislite-hos/auth/login/*
+app.auth.noTokenAllowedUrl: /*
+
+
+#注册中心配置参数
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${hislite.eureka.url}
+
+spring: #spring参数配置
+  application:
+    name: hislite-his-app
+  profiles:
+    active: dev
+  session: 
+    store-type : none 
+  datasource: #数据源参数配置
+    hislite:
+      name: hislite
+      url: ${hislite.mysql.url}
+      username: ${hislite.mysql.username}
+      password: ${hislite.mysql.password}
+      # 使用druid数据源
+      type: com.alibaba.druid.pool.DruidDataSource
+      driver-class-name: com.mysql.jdbc.Driver
+      filters: stat
+      maxActive: 20
+      initialSize: 1
+      maxWait: 60000
+      minIdle: 1
+      maxIdle: 20
+      timeBetweenEvictionRunsMillis: 60000
+      minEvictableIdleTimeMillis: 300000
+      validationQuery: select 'x'
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      poolPreparedStatements: true
+      maxOpenPreparedStatements: 20
+  redis: #Redis参数配置
+ # 单节点配置
+   database: 0
+   host: ${hislite.redis.ip}
+   port: ${hislite.redis.port}
+   password: ${hislite.redis.pwd}
+   timeout: 0
+
+  #异步任务线程池配置
+  task:
+    pool:
+      corePoolSize: 20
+      maxPoolSize: 20
+      keepAliveSeconds: 5
+      queueCapacity: 50
+
+
+#ribbon
+ribbon:
+  ReadTimeout: ${hislite.ReadTimeout}
+  ConnectTimeout: ${hislite.ConnectTimeout}
+  MaxAutoRetries: 0
+  MaxAutoRetriesNextServer: 1
+  eureka:
+    enabled: true
+#启用熔断
+feign:
+  hystrix:
+    enabled: true
+hystrix:
+  command:
+    default:
+      execution.isolation.thread.timeoutInMilliseconds: ${hislite.ReadTimeout}
+
+#LogBack日志配置
+logging:
+  path: /home/serveradm/logs
+  config: classpath:config/logback-spring.xml
+  log-level: DEBUG
+
+cxf:
+  path: /webservice

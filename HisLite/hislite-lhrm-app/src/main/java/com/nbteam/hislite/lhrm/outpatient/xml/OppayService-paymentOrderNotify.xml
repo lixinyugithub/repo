@@ -1,0 +1,17 @@
+<mapping>
+	<class name="com.nbteam.hislite.lhrm.api.outpatient.vo.Oppayed2HisResultVo">
+		<map-to xml="Response" />
+		<field name="resultCode" type="string">
+			<bind-xml name="RESULT" node="element"></bind-xml>
+		</field>
+		<field name="resultMsg" type="string">
+			<bind-xml name="MESSAGE" node="element"></bind-xml>
+		</field>
+		<field name="hisRecepitNo" type="string">
+			<bind-xml name="INVOICENO" node="element"></bind-xml>
+		</field>
+		<field name="hisSerialNo" type="string">
+			<bind-xml name="SERIALNO" node="element"></bind-xml>
+		</field>
+	</class>
+</mapping>

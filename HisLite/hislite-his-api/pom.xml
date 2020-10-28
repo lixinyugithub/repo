@@ -1,0 +1,47 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.nbteam.hislite</groupId>
+    <artifactId>hislite</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <groupId>com.nbteam.hislite</groupId>
+  <artifactId>hislite-his-api</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>hislite-his-api</name>
+  <description>医院应用API</description>
+  
+  <dependencies>
+	<!-- 调用权限系统API-->
+	<dependency>
+		<groupId>com.nbteam.hislite</groupId>
+		<artifactId>hislite-common</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</dependency>
+	<!-- END -->
+	<!-- 提供fengin 依赖jar包 -->
+	<dependency>
+		<groupId>org.springframework.cloud</groupId>
+		<artifactId>spring-cloud-netflix-core</artifactId>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework.cloud</groupId>
+		<artifactId>spring-cloud-starter-hystrix</artifactId>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework.cloud</groupId>
+		<artifactId>spring-cloud-starter-hystrix-dashboard</artifactId>
+	</dependency>
+	<!--end  -->
+	
+	<!-- api swagger  参数说明依赖-->
+	<dependency>
+		<groupId>io.springfox</groupId>
+		<artifactId>springfox-swagger2</artifactId>
+		<version>${springfox.version}</version>
+	</dependency>
+	<!--  -->
+	
+  </dependencies>
+  
+</project>

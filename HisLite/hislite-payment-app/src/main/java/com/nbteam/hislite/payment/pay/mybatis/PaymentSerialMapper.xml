@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nbteam.hislite.payment.pay.mapper.PaymentSerialMapper">
+  <resultMap id="BaseResultMap" type="com.nbteam.hislite.payment.api.pay.dto.PaymentSerial">
+    <id column="pay_serial_id" jdbcType="BIGINT" property="paySerialId" />
+    <result column="pay_order_id" jdbcType="BIGINT" property="payOrderId" />
+    <result column="pay_mode" jdbcType="VARCHAR" property="payMode" />
+    <result column="pay_channel" jdbcType="VARCHAR" property="payChannel" />
+    <result column="pay_method" jdbcType="VARCHAR" property="payMethod" />
+    <result column="total_fee" jdbcType="INTEGER" property="totalFee" />
+    <result column="medicare_fee" jdbcType="INTEGER" property="medicareFee" />
+    <result column="discount_fee" jdbcType="INTEGER" property="discountFee" />
+    <result column="fee" jdbcType="INTEGER" property="fee" />
+    <result column="status" jdbcType="CHAR" property="status" />
+    <result column="over_time" jdbcType="TIMESTAMP" property="overTime" />
+    <result column="inside_merchant_id" jdbcType="BIGINT" property="insideMerchantId" />
+    <result column="merchant_id" jdbcType="VARCHAR" property="merchantId" />
+    <result column="merchant_order_id" jdbcType="VARCHAR" property="merchantOrderId" />
+    <result column="pre_pay_no" jdbcType="VARCHAR" property="prePayNo" />
+    <result column="payed_time" jdbcType="TIMESTAMP" property="payedTime" />
+    <result column="acquire_serial_no" jdbcType="VARCHAR" property="acquireSerialNo" />
+    <result column="bank" jdbcType="VARCHAR" property="bank" />
+    <result column="bank_serial_no" jdbcType="VARCHAR" property="bankSerialNo" />
+    <result column="channel_user_id" jdbcType="VARCHAR" property="channelUserId" />
+    <result column="medical_card_id" jdbcType="VARCHAR" property="medicalCardId" />
+    <result column="med_response_content" jdbcType="VARCHAR" property="medResponseContent" />
+    <result column="ext_fields" jdbcType="VARCHAR" property="extFields" />
+    <result column="revoke_time" jdbcType="TIMESTAMP" property="revokeTime" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    pay_serial_id, pay_order_id, pay_mode, pay_channel, pay_method, total_fee, medicare_fee, 
+    discount_fee, fee, status, over_time, inside_merchant_id, merchant_id, merchant_order_id, 
+    pre_pay_no, payed_time, acquire_serial_no, bank, bank_serial_no, channel_user_id, 
+    medical_card_id, med_response_content, ext_fields, revoke_time, create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_payment_serial
+    where pay_serial_id = #{paySerialId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_payment_serial
+    where pay_serial_id = #{paySerialId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.nbteam.hislite.payment.api.pay.dto.PaymentSerial">
+    <selectKey keyProperty="paySerialId" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into t_payment_serial (pay_order_id, pay_mode, pay_channel, 
+      pay_method, total_fee, medicare_fee, 
+      discount_fee, fee, status, 
+      over_time, inside_merchant_id, merchant_id, 
+      merchant_order_id, pre_pay_no, payed_time, 
+      acquire_serial_no, bank, bank_serial_no, 
+      channel_user_id, medical_card_id, med_response_content, 
+      ext_fields, revoke_time, create_time, 
+      update_time)
+    values (#{payOrderId,jdbcType=BIGINT}, #{payMode,jdbcType=VARCHAR}, #{payChannel,jdbcType=VARCHAR}, 
+      #{payMethod,jdbcType=VARCHAR}, #{totalFee,jdbcType=INTEGER}, #{medicareFee,jdbcType=INTEGER}, 
+      #{discountFee,jdbcType=INTEGER}, #{fee,jdbcType=INTEGER}, #{status,jdbcType=CHAR}, 
+      #{overTime,jdbcType=TIMESTAMP}, #{insideMerchantId,jdbcType=BIGINT}, #{merchantId,jdbcType=VARCHAR}, 
+      #{merchantOrderId,jdbcType=VARCHAR}, #{prePayNo,jdbcType=VARCHAR}, #{payedTime,jdbcType=TIMESTAMP}, 
+      #{acquireSerialNo,jdbcType=VARCHAR}, #{bank,jdbcType=VARCHAR}, #{bankSerialNo,jdbcType=VARCHAR}, 
+      #{channelUserId,jdbcType=VARCHAR}, #{medicalCardId,jdbcType=VARCHAR}, #{medResponseContent,jdbcType=VARCHAR}, 
+      #{extFields,jdbcType=VARCHAR}, #{revokeTime,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.nbteam.hislite.payment.api.pay.dto.PaymentSerial">
+    <selectKey keyProperty="paySerialId" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into t_payment_serial
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="payOrderId != null">
+        pay_order_id,
+      </if>
+      <if test="payMode != null">
+        pay_mode,
+      </if>
+      <if test="payChannel != null">
+        pay_channel,
+      </if>
+      <if test="payMethod != null">
+        pay_method,
+      </if>
+      <if test="totalFee != null">
+        total_fee,
+      </if>
+      <if test="medicareFee != null">
+        medicare_fee,
+      </if>
+      <if test="discountFee != null">
+        discount_fee,
+      </if>
+      <if test="fee != null">
+        fee,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="overTime != null">
+        over_time,
+      </if>
+      <if test="insideMerchantId != null">
+        inside_merchant_id,
+      </if>
+      <if test="merchantId != null">
+        merchant_id,
+      </if>
+      <if test="merchantOrderId != null">
+        merchant_order_id,
+      </if>
+      <if test="prePayNo != null">
+        pre_pay_no,
+      </if>
+      <if test="payedTime != null">
+        payed_time,
+      </if>
+      <if test="acquireSerialNo != null">
+        acquire_serial_no,
+      </if>
+      <if test="bank != null">
+        bank,
+      </if>
+      <if test="bankSerialNo != null">
+        bank_serial_no,
+      </if>
+      <if test="channelUserId != null">
+        channel_user_id,
+      </if>
+      <if test="medicalCardId != null">
+        medical_card_id,
+      </if>
+      <if test="medResponseContent != null">
+        med_response_content,
+      </if>
+      <if test="extFields != null">
+        ext_fields,
+      </if>
+      <if test="revokeTime != null">
+        revoke_time,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="payOrderId != null">
+        #{payOrderId,jdbcType=BIGINT},
+      </if>
+      <if test="payMode != null">
+        #{payMode,jdbcType=VARCHAR},
+      </if>
+      <if test="payChannel != null">
+        #{payChannel,jdbcType=VARCHAR},
+      </if>
+      <if test="payMethod != null">
+        #{payMethod,jdbcType=VARCHAR},
+      </if>
+      <if test="totalFee != null">
+        #{totalFee,jdbcType=INTEGER},
+      </if>
+      <if test="medicareFee != null">
+        #{medicareFee,jdbcType=INTEGER},
+      </if>
+      <if test="discountFee != null">
+        #{discountFee,jdbcType=INTEGER},
+      </if>
+      <if test="fee != null">
+        #{fee,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=CHAR},
+      </if>
+      <if test="overTime != null">
+        #{overTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="insideMerchantId != null">
+        #{insideMerchantId,jdbcType=BIGINT},
+      </if>
+      <if test="merchantId != null">
+        #{merchantId,jdbcType=VARCHAR},
+      </if>
+      <if test="merchantOrderId != null">
+        #{merchantOrderId,jdbcType=VARCHAR},
+      </if>
+      <if test="prePayNo != null">
+        #{prePayNo,jdbcType=VARCHAR},
+      </if>
+      <if test="payedTime != null">
+        #{payedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="acquireSerialNo != null">
+        #{acquireSerialNo,jdbcType=VARCHAR},
+      </if>
+      <if test="bank != null">
+        #{bank,jdbcType=VARCHAR},
+      </if>
+      <if test="bankSerialNo != null">
+        #{bankSerialNo,jdbcType=VARCHAR},
+      </if>
+      <if test="channelUserId != null">
+        #{channelUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="medicalCardId != null">
+        #{medicalCardId,jdbcType=VARCHAR},
+      </if>
+      <if test="medResponseContent != null">
+        #{medResponseContent,jdbcType=VARCHAR},
+      </if>
+      <if test="extFields != null">
+        #{extFields,jdbcType=VARCHAR},
+      </if>
+      <if test="revokeTime != null">
+        #{revokeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.nbteam.hislite.payment.api.pay.dto.PaymentSerial">
+    update t_payment_serial
+    <set>
+      <if test="payOrderId != null">
+        pay_order_id = #{payOrderId,jdbcType=BIGINT},
+      </if>
+      <if test="payMode != null">
+        pay_mode = #{payMode,jdbcType=VARCHAR},
+      </if>
+      <if test="payChannel != null">
+        pay_channel = #{payChannel,jdbcType=VARCHAR},
+      </if>
+      <if test="payMethod != null">
+        pay_method = #{payMethod,jdbcType=VARCHAR},
+      </if>
+      <if test="totalFee != null">
+        total_fee = #{totalFee,jdbcType=INTEGER},
+      </if>
+      <if test="medicareFee != null">
+        medicare_fee = #{medicareFee,jdbcType=INTEGER},
+      </if>
+      <if test="discountFee != null">
+        discount_fee = #{discountFee,jdbcType=INTEGER},
+      </if>
+      <if test="fee != null">
+        fee = #{fee,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=CHAR},
+      </if>
+      <if test="overTime != null">
+        over_time = #{overTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="insideMerchantId != null">
+        inside_merchant_id = #{insideMerchantId,jdbcType=BIGINT},
+      </if>
+      <if test="merchantId != null">
+        merchant_id = #{merchantId,jdbcType=VARCHAR},
+      </if>
+      <if test="merchantOrderId != null">
+        merchant_order_id = #{merchantOrderId,jdbcType=VARCHAR},
+      </if>
+      <if test="prePayNo != null">
+        pre_pay_no = #{prePayNo,jdbcType=VARCHAR},
+      </if>
+      <if test="payedTime != null">
+        payed_time = #{payedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="acquireSerialNo != null">
+        acquire_serial_no = #{acquireSerialNo,jdbcType=VARCHAR},
+      </if>
+      <if test="bank != null">
+        bank = #{bank,jdbcType=VARCHAR},
+      </if>
+      <if test="bankSerialNo != null">
+        bank_serial_no = #{bankSerialNo,jdbcType=VARCHAR},
+      </if>
+      <if test="channelUserId != null">
+        channel_user_id = #{channelUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="medicalCardId != null">
+        medical_card_id = #{medicalCardId,jdbcType=VARCHAR},
+      </if>
+      <if test="medResponseContent != null">
+        med_response_content = #{medResponseContent,jdbcType=VARCHAR},
+      </if>
+      <if test="extFields != null">
+        ext_fields = #{extFields,jdbcType=VARCHAR},
+      </if>
+      <if test="revokeTime != null">
+        revoke_time = #{revokeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where pay_serial_id = #{paySerialId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.nbteam.hislite.payment.api.pay.dto.PaymentSerial">
+    update t_payment_serial
+    set pay_order_id = #{payOrderId,jdbcType=BIGINT},
+      pay_mode = #{payMode,jdbcType=VARCHAR},
+      pay_channel = #{payChannel,jdbcType=VARCHAR},
+      pay_method = #{payMethod,jdbcType=VARCHAR},
+      total_fee = #{totalFee,jdbcType=INTEGER},
+      medicare_fee = #{medicareFee,jdbcType=INTEGER},
+      discount_fee = #{discountFee,jdbcType=INTEGER},
+      fee = #{fee,jdbcType=INTEGER},
+      status = #{status,jdbcType=CHAR},
+      over_time = #{overTime,jdbcType=TIMESTAMP},
+      inside_merchant_id = #{insideMerchantId,jdbcType=BIGINT},
+      merchant_id = #{merchantId,jdbcType=VARCHAR},
+      merchant_order_id = #{merchantOrderId,jdbcType=VARCHAR},
+      pre_pay_no = #{prePayNo,jdbcType=VARCHAR},
+      payed_time = #{payedTime,jdbcType=TIMESTAMP},
+      acquire_serial_no = #{acquireSerialNo,jdbcType=VARCHAR},
+      bank = #{bank,jdbcType=VARCHAR},
+      bank_serial_no = #{bankSerialNo,jdbcType=VARCHAR},
+      channel_user_id = #{channelUserId,jdbcType=VARCHAR},
+      medical_card_id = #{medicalCardId,jdbcType=VARCHAR},
+      med_response_content = #{medResponseContent,jdbcType=VARCHAR},
+      ext_fields = #{extFields,jdbcType=VARCHAR},
+      revoke_time = #{revokeTime,jdbcType=TIMESTAMP},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where pay_serial_id = #{paySerialId,jdbcType=BIGINT}
+  </update>
+  <select id="selectByMerchantOrderId" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_payment_serial
+    where merchant_order_id = #{merchantOrderId,jdbcType=VARCHAR}
+  </select>
+  <select id="selectByPayOrderId" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_payment_serial
+    where pay_order_id = #{payOrderId,jdbcType=BIGINT} and status = 'U' and pay_method='qr'
+  </select>
+</mapper>
